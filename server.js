@@ -13,7 +13,10 @@ app.use(express.urlencoded({extended:true}));
 app.use(express.json());
 app.use(express.static("Develop/public"));
 
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/fitnesstrackerdb",{useNewUrlParser:true});
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/fitnesstrackerdb",{useNewUrlParser:true,
+useFindAndModify:false,
+useUnifiedTopology:true
+});
 
 require("./routes/html-routes.js")(app);
 require("./routes/workout-api-routes")(app)

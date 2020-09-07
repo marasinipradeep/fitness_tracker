@@ -21,4 +21,10 @@ const TrackerSchema = new Schema({
 
 const Tracker = mongoose.model("Tracker",TrackerSchema);
 
+TrackerSchema.methods.setTotalTrackerDuration = function(){
+    this.totalDuration=0;
+    this.totalDuration +=duration;
+    
+}
+
 module.exports =Tracker;
