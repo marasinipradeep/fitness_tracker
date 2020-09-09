@@ -31,14 +31,11 @@ module.exports =function(app)  {
         console.log("inside api workouts id")
         console.log(req.params)
         console.log(req.body)
-        db.Workout.findByIdAndUpdate(req.params.id,{
+        db.Workout.update({_id:req.params.id},
+            {
             $set:{
-                type:req.body.type,
-                name:req.body.name,
-                weight:req.body.weight,
-                sets:req.body.sets,
-                reps:req.body.reps,
-                duration:req.body.duration
+                exercises:req.body
+                
             }
         }).then(dbTracker=>{
             console.log("Db updated successfully")
