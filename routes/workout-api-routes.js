@@ -1,23 +1,11 @@
-
-
 const db = require("../models");
 module.exports =function(app)  {
-    //Routes for getting index page
-    app.get("/api/workouts/range",(req,res)=>{
-
-        console.log("inside api workoutsrange")
-        db.Tracker.find({}).then(dbTracker=>{
-            console.log(dbTracker)
-            res.json(dbTracker)
-
-            }).catch(err=>{
-                res.json(err)
-            })
-    })
-
+   
+   
     app.get("/api/workouts",(req,res)=>{
         console.log("inside api get workouts")
-        db.Tracker.find({}).then(dbTracker=>{
+        db.Workout.find({})
+        .then(dbTracker=>{
             console.log(dbTracker)
             res.json(dbTracker)
 
@@ -28,8 +16,8 @@ module.exports =function(app)  {
 
     app.post("/api/workouts",(req,res)=>{
         console.log("inside api post workouts")
-        console.log(req.body)
-        db.Tracker.save({}).then(dbTracker=>{
+        console.log(req.params)
+        db.Workout.create(req.body).then(dbTracker=>{
             console.log(dbTracker)
             res.json(dbTracker)
 
@@ -38,11 +26,38 @@ module.exports =function(app)  {
             })
     })
 
-    app.put("/api/workouts/:id",(req,res)=>{
 
+    app.put("/api/workouts/:id",(req,res)=>{
         console.log("inside api workouts id")
         console.log(req.params)
         console.log(req.body)
-        db.Tracker
+        db.Workout.findByIdAndUpdate(req.params.id,{
+            $set:{
+                type:req.body.type,
+                name:req.body.name,
+                weight:req.body.weight,
+                sets:req.body.sets,
+                reps:req.body.reps,
+                duration:req.body.duration
+            }
+        }).then(dbTracker=>{
+            console.log("Db updated successfully")
+            res.json(dbTracker)
+        }).catch(err=>{
+            res.json(err)
+        })
     })
+
+    app.get("/api/workouts/range",(req,res)=>{
+
+        console.log("inside api workoutsrange")
+        db.Workout.find({}).then(dbTracker=>{
+            console.log(dbTracker)
+            res.json(dbTracker)
+
+            }).catch(err=>{
+                res.json(err)
+            })
+    })
+
 }
