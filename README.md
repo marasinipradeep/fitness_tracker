@@ -1,20 +1,10 @@
-# Unit 17 Nosql Homework: Workout Tracker
+![License badge](https://img.shields.io/badge/license-MIT-green)
+# fitness-tracker
 
-For this assignment, you'll create a workout tracker. You have already been provided with the front end code in the `Develop` folder. This assignment will require you to create Mongo database with a Mongoose schema and handle routes with Express.
+## Description
+ This app is able to view create and track daily workouts. It will allow to log multiple exercises in a workout on a given day. It  also tracks the name, type, weight, sets, reps, and duration of exercise. If the exercise is a cardio exercise, It will track the distance traveled.
 
-## User Story
-
-* As a user, I want to be able to view create and track daily workouts. I want to be able to log multiple exercises in a workout on a given day. I should also be able to track the name, type, weight, sets, reps, and duration of exercise. If the exercise is a cardio exercise, I should be able to track my distance traveled.
-
-## Business Context
-
-A consumer will reach their fitness goals more quickly when they track their workout progress.
-
-## Acceptance Criteria
-
-When the user loads the page, they should be given the option to create a new workout or continue with their last workout.
-
-The user should be able to:
+The user able to:
 
   * Add exercises to a previous workout plan.
 
@@ -22,36 +12,62 @@ The user should be able to:
 
   * View the combined weight of multiple exercises on the `stats` page.
 
-To deploy an application with a MongoDB database to Heroku, you'll need to set up a MongoDB Atlas account and connect a database from there to your application. Be sure to use the following guides for support:
 
-  * [Set Up MongoDB Atlas](../04-Supplemental/MongoAtlas-Setup.md)
+## Table of Content
+1. [Installation](#Installation)
+2. [Database](#Database)
+3. [License](#License)
+4. [Contribution](#Contribution)
+5. [Tests](#Tests)
+6. [Questions](#Questions)
+7. [Demo](#Demo)
 
-  * [Deploy with Heroku and MongoDB Atlas](../04-Supplemental/MongoAtlas-Deploy.md)
+## Installation
+The dependencies are [Mongoose](https://mongoosejs.com/) for ODM.
+[EXPRESS](https://expressjs.com/) server for routing.
+[MongoDBAtlas](https://www.mongodb.com/cloud/atlas) for live mongoDB database
 
-## Commit Early and Often
+Install the packages/dependencies by hitting following command on your terminal console:-
+```
+npm install
+```
 
-One of the most important skills to master as a web developer is version control. Building the habit of committing via Git is important for the following two reasons:
+## Database
+The GitHub contains a seeds to help setup the database:
 
-1. Your commit history is a signal to employers that you are actively working on projects and learning new skills.
+* **Workout**:
+  * **day** - type Date to hold day of workout
 
-2. Your commit history allows you to revert your codebase in the event that you need to return to a previous state.
+* **exercises**:
+  * **type** - String to hold type of workout
+  * **name** - String to hold workout name
+  * **duration** - Number to hold workout duration
+  * **weight** - Number to hold work weight
+  * **reps** - Number to hold workout reps
+  * **sets** - Number to hold workout sets
+  * **distance** - Number to hold distance covered while workout
 
-Follow these guidelines for committing:
 
-* Make single-purpose commits for related changes to ensure a clean, manageable history. If you are fixing two issues, make two commits.
 
-* Write descriptive, meaningful commit messages so that you and anyone else looking at your repository can easily understand its history.
+  
+## License
+```
+This is MIT license
+```
 
-* Don't commit half-done work, for the sake of your collaborators (and your future self!).
+## Contribution
+```
+When contributing to this repository, please first discuss the change you wish to make via issue, email, or any other method with the owner of this repository before making a change.
+```
 
-* Test your application before you commit to ensure functionality at every step in the development process.
+## Tests
+Testing was completed using node.js and express before deploying finished application on Heroku.
 
-We want you to have well over 200 commits by graduation, so commit early and often!
+## Questions
+- Pradeep Marasini </br>
+ GitHub: <a href="https://github.com/marasinipradeep">https://github.com/marasinipradeep</a> </br>
+ Email: <a href="marasinipradeep@gmail.com">marasinipradeep@gmail.com</a>
 
-## Submission on BCS
-
-You are required to submit the following:
-
-* The URL to the deployed application
-
-* The URL to the GitHub repository
+  
+## Demo
+<a href="https://www.youtube.com/watch?v=BTH5oNE8aMM&feature=youtu.be">Click here for a video demo</a>

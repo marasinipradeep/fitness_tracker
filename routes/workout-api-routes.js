@@ -1,10 +1,9 @@
 const db = require("../models");
 module.exports =function(app)  {
-   
-   
     app.get("/api/workouts",(req,res)=>{
         console.log("inside api get workouts")
         db.Workout.find({})
+        .sort({day:1})
         .then(dbTracker=>{
             console.log(dbTracker)
             res.json(dbTracker)
@@ -27,16 +26,17 @@ module.exports =function(app)  {
     })
 
 
-    app.put("/api/workouts/:id",(req,res)=>{
+    app.put("/api/workouts/:id",
+    (req,res)=>{
         console.log("inside api workouts id")
-        console.log(req.params)
-        console.log(req.body)
-        db.Workout.update({_id:req.params.id},
+        const {duration}=req.body
+        console.log(duration)
+         db.Workout.findByIdAndUpdate(req.params.id,
             {
-            $set:{
-                exercises:req.body
-                
-            }
+            $push:{exercises:req.body},
+            $inc:{totalDuration:duration}
+        },{
+            new:true
         }).then(dbTracker=>{
             console.log("Db updated successfully")
             res.json(dbTracker)
